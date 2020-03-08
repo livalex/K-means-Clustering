@@ -1,0 +1,48 @@
+function centroids = initCentroids(X, K)
+	// size(x,2)) returneaza nr de col din X,zeros(...) face o matrice de 
+	// K si nr de col din X
+    centroids = zeros(K,size(X,2));
+	// randeaza un vector alatoriu de la 1,la nr de linii al lui X 
+    randidx = randperm(size(X,1));
+	// : - iti intoarce tot randul
+    centroids = X(randidx(1:K), :);
+end
+function indices = getClosestCentroids(X, centroids)
+  K = size(centroids, 1);
+  indices = zeros(size(X,1), 1);
+  m = size(X,1);
+
+  for i=1:m
+    k = 1;
+    min_dist = sum((X(i,:) - centroids(1,:)) .^ 2);
+    for j=2:K
+        dist = sum((X(i,:) - centroids(j,:)) .^ 2);
+        if(dist < min_dist)
+          min_dist = dist;
+          k = j;
+        end
+    end
+    indices(i) = k;
+  end
+end
+function centroids = computeCentroids(X, idx, K)
+
+  [m n] = size(X);
+  centroids = zeros(K, n);
+  
+  for i=1:K
+    xi = X(idx==i,:);
+    ck = size(xi,1);
+    # centroids(i, :) = (1/ck) * sum(xi);
+    centroids(i, :) = (1/ck) * [sum(xi(:,1)) sum(xi(:,2))];
+  end
+end
+X = %initialize dataset here
+K = 3;
+max_iterations = 10;
+centroids = initCentroids(X, K);
+
+for i=1:max_iterations
+  indices = getClosestCentroids(X, centroids);
+  centroids = computeCentroids(X, indices, K);
+end

@@ -1,0 +1,69 @@
+// Copyright[2019] <Livadaru Alexandru-Valentin 313CA>
+
+		CLUSTERING.ALGORITMUL K-MEANS.
+
+	TASK1:
+-Cu ajutorul lui load am citit numarul de clustere din input.
+
+-Pe points nu am putut sa il citesc cu load,deoarece imi luat un bloc cu o 
+singura linie si o singura coloana. Asa ca am folosit dlmread.
+
+	TASK2:
+-Am luat un numar random de iteratii.
+
+-Am initializat matricea in care voi stoca centroizii cu 0. Si am folosit 
+NC ca nr de linii si cate coloane aveau datele de intrare.
+
+-Mi-am creat un vector cu lungimea egala cu nr de linii din input. Apoi l-am
+umplut cu numere intr-o ordine aleatorie,numere de la 1 la nr de linii din input.
+
+-Am luat primele NC coordonate pt linii din vector si am facut liniile de la
+acele coordonate sa fie centroizi,astfel incat la inceput centroizii erau random.
+
+-Mi-am creat o matrice unde stochez carui cluster apartine fiecarui punct(indmat).
+
+-In totalsize voi stoca cate puncte apartin unui centroid si in totalcluster
+voi pune suma coordonatelor punctelor din input care apartin centroidului respectiv.
+
+-Parcurgem tot inputul.
+
+-Facem distanta Euclidiana dintre primul punct si primul centroid si consideram
+distanta ca fiind minima.
+
+-Apoi facem distanta dintre primul punct si al doilea centroid si vedem
+de care centroid e mai aproape. Procesul s-ar fi continuat in acelasi mod
+daca erau mai mult de doua centroide.
+
+-Apoi stocam in matricea indmat de care centroid apartine punctul.
+
+-Calculam suma coordonatelor punctelor ce apartin unui centroid precum si
+numarul lor pt a determina noul centroid care se va forma.
+
+-Procesul continua pana cand diferenta dintre ele este mai mica decat o
+toleranta anume(eps in cazul nostru),ceea ce inseamna ca punctele nu se
+mai schimba.
+
+	TASK3:
+-Am folosit o parte din codul de la punctul 2 pentru a face rost de matricea
+indmat,in care am stocat carui cluster apartine fiecare punct.
+
+-Apoi am folosit comanda scatter3 cu primii 3 parametrii fiind coloanele
+din input si indmat,care va oferi o culoare specifica punctelor fiecarui cluster.
+
+	TASK4:
+-Precum am zis si la TASK3 am luat o parte din codul de la 2 pt a face rost de
+indmat,si am caluculat costul unui cluster conform modului specificat in enunt.
+
+	TASK5:
+-Am citit din nou intreaga matrice cu dlmread si am calculat centroizii si costurile lor pentru NC de la 1 la 10 inclusiv.
+
+-La sfarsit am trasat graficul in functie de numarul de clustere si costul lor
+folosind functia plot.
+
+	ALTE ADAUGARI
+Cam astea au fost toate explicatiile mele legate de aceasta tema. Sper ca nu
+am ratat ceva. Daca exista neclaritati,eu am lasat comentarii si in cod care
+sper sa elucideze orice mister.
+
+Iti multumesc frumos ca ti-ai rupt din timpul tau pretios pentru a citi tema
+mea si iti urez o zi buna :)
